@@ -4,6 +4,7 @@ import authRoutes from "./routes/authRoutes.js"
 import { connectDB } from "./lib/db.js";
 import bookRoutes from "./routes/bookRoutes.js"
 import cors from "cors"
+import job from "./lib/cron.js"
 
 
 dotenv.config();
@@ -11,6 +12,7 @@ dotenv.config();
 const app=express();
 
 // app.use(cors());
+job.start();
 app.use(cors({
     origin: "*",
     methods: "GET, POST, PUT, DELETE",
